@@ -19,13 +19,13 @@ INCLUDEDIR = include
 OBJDIR     = obj
 BINDIR     = bin
 
-DEPS = main sorts
+DEPS = main
 
 SRC := $(addsuffix .cpp, $(DEPS))
 
 OBJ := $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
 
-EXE := $(BINDIR)/tp2.out
+EXE := $(BINDIR)/tp0.out
 
 run:  all
 ### caso queira rodar o arquivo de teste utilizado no relatório, "descomente" a linha abaixo
@@ -42,7 +42,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 # Rule to build the main executable
 all: $(OBJ)
 	mkdir -p $(BINDIR)
-	$(LINKER) $(LFLAGS) $(OBJ) -o $(BINDIR)/tp2.out
+	$(LINKER) $(LFLAGS) $(OBJ) -o $(BINDIR)/tp0.out
 
 .PHONY: clean
 clean:
