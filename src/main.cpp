@@ -1,67 +1,55 @@
 #include <iostream>
 #include <vector>
-#include <cstdlib>
-#include <ctime>
 #include <chrono>
-#include "quicksorts.cpp"
 
-// Função para gerar um conjunto de números aleatórios
-std::vector<int> gerarNumerosAleatorios(int tamanho) {
-    std::vector<int> numeros(tamanho);
-    for (int i = 0; i < tamanho; ++i) {
-        numeros[i] = rand() % 1000000; // Gerando números entre 0 e 999999
-    }
-    return numeros;
-}
+// #include "quicksorts.cpp"
+#include "fibonacci.cpp"
 
-// Função para calcular o tempo de execução de uma determinada estratégia de ordenação
-void calcularTempoOrdenacao(std::vector<int>& numeros, void (*funcaoOrdenacao)(std::vector<int>&, int)) {
-    auto inicio = std::chrono::steady_clock::now();
-    funcaoOrdenacao(numeros, numeros.size());
-    auto fim = std::chrono::steady_clock::now();
-    std::chrono::duration<double> duracao = fim - inicio;
-    std::cout << "Tempo de execucao: " << duracao.count() << " segundos" << std::endl;
+#define debug(x) cout << #x << " = " << x<< endl
+#define SECONDS 15
+#define MAX 10000000000
+#define MAXR 50
+
+
+
+int time(ll m, ll (*fibonacci)(ll)){
+    auto start = chrono::steady_clock::now();
+    fibonacci(m);
+    auto end = chrono::steady_clock::now();
+    chrono::duration<double> duracao = end - start;
+    return duracao.count();
 }
 
 int main() {
-    srand(time(0)); // Inicializando a semente do gerador de números aleatórios com o tempo atual
+    //debug
+    // int seconds = time(MAX, fib);
+    // debug(seconds);
+    // return 0;
 
-    // Gerar 50 conjuntos de 10.000 números aleatórios
-    const int NUM_CONJUNTOS = 50;
-    const int TAMANHO_CONJUNTO = 10000000;
-    std::vector<std::vector<int>> conjuntos;
-    for (int i = 0; i < NUM_CONJUNTOS; ++i) {
-        conjuntos.push_back(gerarNumerosAleatorios(TAMANHO_CONJUNTO));
+    //teste para fib iterativo
+    ll l=0LL, r=MAX;
+    while(l<r){
+        ll m = (l+r)/2;
+        int t = time(m, fib);
+        if(t >= SECONDS){
+            r = m;
+        } else {
+            l = m+1;
+        }
     }
+    std::cout << "Quantidade de números gerados (iterativo): "<< l-1 << endl;
 
-    // Aplicar as diferentes estratégias de ordenação e calcular os tempos de execução
-    std::cout << "Quicksort Recursivo:" << std::endl;
-    for (int i = 0; i < NUM_CONJUNTOS; ++i) {
-        std::cout << "Conjunto " << i + 1 << ": ";
-        calcularTempoOrdenacao(conjuntos[i], QuicksortRECURSIVO);
+    //teste para fib recursivo
+    l=0LL, r=MAXR;
+    while(l<r){
+        ll m = (l+r)/2;
+        int t = time(m, fibR);
+        if(t >= SECONDS){
+            r = m;
+        } else {
+            l = m+1;
+        }
     }
-
-    std::cout << std::endl;
-
-    std::cout << "Quicksort Não Recursivo:" << std::endl;
-    for (int i = 0; i < NUM_CONJUNTOS; ++i) {
-        std::cout << "Conjunto " << i + 1 << ": ";
-        calcularTempoOrdenacao(conjuntos[i], QuicksortNRecursivo);
-    }
-
-    std::cout << "Quicksort Recursivo com Inserção:" << std::endl;
-    for (int i = 0; i < NUM_CONJUNTOS; ++i) {
-        std::cout << "Conjunto " << i + 1 << ": ";
-        calcularTempoOrdenacao(conjuntos[i], QuicksortRECURSIVO);
-    }
-
-    std::cout << std::endl;
-
-    std::cout << "Quicksort Não Recursivo com Inserção:" << std::endl;
-    for (int i = 0; i < NUM_CONJUNTOS; ++i) {
-        std::cout << "Conjunto " << i + 1 << ": ";
-        calcularTempoOrdenacao(conjuntos[i], QuicksortNRecursivo);
-    }
-
-    return 0;
+    std::cout << "Quantidade de números gerados (recursivo): "<< l-1 << endl;
+    // return 0;
 }
