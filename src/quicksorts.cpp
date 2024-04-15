@@ -93,14 +93,20 @@ void OrdenaI(int Esq, int Dir, vector<int> &A) {
 }
 
 // Quicksort Recursivo
-void QuicksortRECURSIVO(vector<int> &V, int n) {
-    Ordena(0, n - 1, V);
-}
-// Quicksort Recursivo com Inserção
-void QuicksortRECURSIVOI(vector<int> &V, int n) {
-    Ordena(0, n - 1, V);
+
+vector<int> QuicksortRecursivoPuro(const vector<int> arr) {
+    vector<int> sorted = arr;
+    Ordena(0, sorted.size() - 1, sorted);
+    return sorted;
 }
 
+// Quicksort Recursivo com Inserção
+
+vector<int> QuicksortRecursivoOrdenacaoInsercao(const vector<int> arr) {
+    vector<int> sorted = arr;
+    OrdenaI(0, sorted.size() - 1, sorted);
+    return sorted;
+}
 
 /*
   _   _               _____                          _            
@@ -111,67 +117,69 @@ void QuicksortRECURSIVOI(vector<int> &V, int n) {
  |_| \_|\__,_|\___/  |_|  \_\___|\___|\__,_|_|  |___/_| \_/ \___/  
 */                                                                                                                           
 // Quicksort Não Recursivo
-void QuicksortNRecursivo(vector<int> &V, int n) {
+vector<int> QuicksortNaoRecursivoPuro(const vector<int> arr) {
+    vector<int> sorted = arr;
     queue<pair<int, int>> q;
-    q.push(make_pair(0, n - 1));
+    q.push(make_pair(0, sorted.size() - 1));
     int i, j;
     while (!q.empty()) {
         pair<int, int> t = q.front();
         q.pop();
         i = t.first, j = t.second;
-        int x = V[(i + j) / 2];  // pivo x
+        int x = sorted[(i + j) / 2]; 
         do {
-            while (x > V[i]) {
+            while (x > sorted[i]) {
                 i++;
             }
-            while (x < V[j]) {
+            while (x < sorted[j]) {
                 j--;
             }
             if (i <= j) {
-                swap(V[i], V[j]);
+                swap(sorted[i], sorted[j]);
                 i++;
                 j--;
             }
         } while (i <= j);
-
         if (t.first < j) q.push(make_pair(t.first, j));
         if (i < t.second) q.push(make_pair(i, t.second));
-        
     }
+    return sorted;
 }
 
 // Quicksort Não Recursivo com Inserção
-void QuicksortNRecursivoI(vector<int> &V, int n) {
+
+vector<int> QuicksortNaoRecursivoOrdenacaoInsercao(const vector<int> arr) {
+    vector<int> sorted = arr;
     queue<pair<int, int>> q;
-    q.push(make_pair(0, n - 1));
+    q.push(make_pair(0, sorted.size() - 1));
     int i, j;
     while (!q.empty()) {
         pair<int, int> t = q.front();
         q.pop();
         i = t.first, j = t.second;
-        int x = V[(i + j) / 2];  // pivo x
+        int x = sorted[(i + j) / 2];  
         if (j - i + 1 > INSERTION_THRESHOLD) {
             do {
-                while (x > V[i]) {
+                while (x > sorted[i]) {
                     i++;
                 }
-                while (x < V[j]) {
+                while (x < sorted[j]) {
                     j--;
                 }
                 if (i <= j) {
-                    swap(V[i], V[j]);
+                    swap(sorted[i], sorted[j]);
                     i++;
                     j--;
                 }
             } while (i <= j);
-
             if (t.first < j) q.push(make_pair(t.first, j));
             if (i < t.second) q.push(make_pair(i, t.second));
         }  
         else {
-            InsertionSort(V, t.first, t.second);
+            InsertionSort(sorted, t.first, t.second);
         }
     }
+    return sorted;
 }
   
   

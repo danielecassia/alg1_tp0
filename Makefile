@@ -27,12 +27,7 @@ OBJ := $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
 
 EXE := $(BINDIR)/tp0.out
 
-run:  all
-### caso queira rodar o arquivo de teste utilizado no relatório, "descomente" a linha abaixo
-#	./script.sh
-#./scriptTemplate.sh
-# $(EXE) -s "0 | 1 & 2" 01e  
-# $(EXE) -s "(1 | 2) & ~(1 & 2)" ee  
+run:  alle  
 
 # Rule to compile all source files
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
