@@ -27,7 +27,7 @@ OBJ := $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
 
 EXE := $(BINDIR)/tp0.out
 
-run:  alle  
+run:  all
 
 # Rule to compile all source files
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
