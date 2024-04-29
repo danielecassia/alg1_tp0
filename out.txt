@@ -1,48 +1,48 @@
 Testando com SECONDS=15
-Quantidade de números gerados (iterativo): 3221874999
-tempo: 807.268 segundos
+Quantidade de números gerados (iterativo): 5858154297
  ---------------------------------------------- 
 Quantidade de números gerados (recursivo): 46
-tempo: 1.38664 segundos
  ---------------------------------------------- 
  
 Testando com SECONDS=30
 Quantidade de números gerados (iterativo): 10660717773
-tempo: 1207.3 segundos
  ---------------------------------------------- 
 Quantidade de números gerados (recursivo): 47
-tempo: 1.23199 segundos
  ---------------------------------------------- 
 
 Testando com SECONDS=45
 Quantidade de números gerados (iterativo): 16221554640
-tempo: 1731.78 segundos
  ---------------------------------------------- 
 Quantidade de números gerados (recursivo): 48
-tempo: 1.86546 segundos
  ---------------------------------------------- 
 
 Testando com SECONDS=60
 Quantidade de números gerados (iterativo): 24321228558
-tempo: 2445.34 segundos
  ---------------------------------------------- 
 Quantidade de números gerados (recursivo): 49
-tempo: 1.69978 segundos
  ---------------------------------------------- 
 
 Testando com SECONDS=75
 Quantidade de números gerados (iterativo): 29928105012
-tempo: 3039.41 segundos
  ---------------------------------------------- 
 Quantidade de números gerados (recursivo): 49
-tempo: 1.64425 segundos
  ---------------------------------------------- 
  
 Testando com SECONDS=90
 Quantidade de números gerados (iterativo): 36176077687
-tempo: 3246.45 segundos
  ---------------------------------------------- 
 Quantidade de números gerados (recursivo): 49
-tempo: 1.66631 segundos
+ ---------------------------------------------- 
+
+Testando com SECONDS=105
+Quantidade de números gerados (iterativo): 42182943423 44659813836
+ ---------------------------------------------- 
+Quantidade de números gerados (recursivo): 50
+ ---------------------------------------------- 
+
+Testando com SECONDS=120
+Quantidade de números gerados (iterativo): 44659813836
+ ---------------------------------------------- 
+Quantidade de números gerados (recursivo): 50
  ---------------------------------------------- 
 

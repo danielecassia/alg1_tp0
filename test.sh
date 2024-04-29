@@ -20,7 +20,7 @@ EXE="bin/tp0.out"
 $COMPILE
 
 # Loop sobre os diferentes valores de SECONDS
-for SECONDS_VAL in 105 120
+for SECONDS_VAL in 15 30 45 60 75 90 105 120
 do
     echo "Testando com SECONDS=$SECONDS_VAL" >> out.txt 
     echo "Testando com SECONDS=$SECONDS_VAL"
